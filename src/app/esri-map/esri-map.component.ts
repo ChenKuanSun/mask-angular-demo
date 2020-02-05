@@ -81,10 +81,6 @@ export class EsriMapComponent implements OnInit, OnDestroy {
         Expand,
         Home,
       ]) => {
-
-
-
-
         const clusterConfig = {
           type: 'cluster',
           clusterRadius: '10px',
@@ -134,35 +130,6 @@ export class EsriMapComponent implements OnInit, OnDestroy {
                 ]
               }
             ]
-            // [
-            // {
-            //   // It is also possible to set the fieldInfos outside of the content
-            //   // directly in the popupTemplate. If no fieldInfos is specifically set
-            //   // in the content, it defaults to whatever may be set within the popupTemplate.
-            //   type: 'fields',
-            //   fieldInfos: [
-            //     {
-            //       fieldName: 'count',
-            //       label: '預估剩餘口罩數量'
-            //     },
-            //     {
-            //       fieldName: 'tel',
-            //       label: '電話'
-            //     },
-            //     {
-            //       fieldName: 'address',
-            //       label: '地址'
-            //     },
-            //     {
-            //       fieldName: 'time',
-            //       label: '營業時間'
-            //     },
-            //     {
-            //       fieldName: 'notice',
-            //       label: '備註'
-            //     },
-            //   ]
-            // }]
           },
           renderer: {
             type: 'simple',
@@ -187,19 +154,12 @@ export class EsriMapComponent implements OnInit, OnDestroy {
           }
         });
 
-
-
-
-
-
-
-
-
         // Configure the Map
         const mapProperties = {
           basemap: this._basemap,
           layers: [layer]
         };
+
         const esriMap = new EsriMap(mapProperties);
 
         // Initialize the MapView
@@ -230,7 +190,6 @@ export class EsriMapComponent implements OnInit, OnDestroy {
       concatMap((view) => from(view.when())),
       map(() => this._view),
       catchError((e) => {
-        console.log('EsriLoader: ', e);
         return throwError('EsriLoader: ', e);
       })
     )
@@ -246,7 +205,6 @@ export class EsriMapComponent implements OnInit, OnDestroy {
       this.mapLoadedEvent.emit(true);
     });
     navigator.geolocation.getCurrentPosition((pos) => {
-      console.log(pos.coords);
       const p = pos.coords;
       this._center = [p.longitude, p.latitude];
     });
@@ -258,8 +216,4 @@ export class EsriMapComponent implements OnInit, OnDestroy {
       this._view.container = null;
     }
   }
-
-
-
-
 }
