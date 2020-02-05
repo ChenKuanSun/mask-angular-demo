@@ -105,33 +105,64 @@ export class EsriMapComponent implements OnInit, OnDestroy {
             title: '{name}',
             content: [
               {
-                // It is also possible to set the fieldInfos outside of the content
-                // directly in the popupTemplate. If no fieldInfos is specifically set
-                // in the content, it defaults to whatever may be set within the popupTemplate.
+                type: 'text',
+                text: '<a target="_blank" href="https://www.google.com/maps/search/{y},+{x}">{name}在Google地圖上的位置</a>'
+              },
+              {
                 type: 'fields',
                 fieldInfos: [
                   {
                     fieldName: 'count',
-                    label: '預估剩餘口罩數量：'
+                    label: '預估剩餘口罩數量'
                   },
                   {
                     fieldName: 'tel',
-                    label: '電話：'
+                    label: '電話'
                   },
                   {
                     fieldName: 'address',
-                    label: '地址：'
+                    label: '地址'
                   },
                   {
                     fieldName: 'time',
-                    label: '營業時間：'
+                    label: '營業時間'
                   },
                   {
                     fieldName: 'notice',
-                    label: '備註：'
-                  }
+                    label: '備註'
+                  },
                 ]
-              }]
+              }
+            ]
+            // [
+            // {
+            //   // It is also possible to set the fieldInfos outside of the content
+            //   // directly in the popupTemplate. If no fieldInfos is specifically set
+            //   // in the content, it defaults to whatever may be set within the popupTemplate.
+            //   type: 'fields',
+            //   fieldInfos: [
+            //     {
+            //       fieldName: 'count',
+            //       label: '預估剩餘口罩數量'
+            //     },
+            //     {
+            //       fieldName: 'tel',
+            //       label: '電話'
+            //     },
+            //     {
+            //       fieldName: 'address',
+            //       label: '地址'
+            //     },
+            //     {
+            //       fieldName: 'time',
+            //       label: '營業時間'
+            //     },
+            //     {
+            //       fieldName: 'notice',
+            //       label: '備註'
+            //     },
+            //   ]
+            // }]
           },
           renderer: {
             type: 'simple',
@@ -184,8 +215,8 @@ export class EsriMapComponent implements OnInit, OnDestroy {
         // Add the search widget to the top right corner of the view
         this._view.ui.add(
           new Search({
-          view: this._view
-        }), 'top-right'
+            view: this._view
+          }), 'top-right'
         );
         this._view.ui.add(
           new Home({
