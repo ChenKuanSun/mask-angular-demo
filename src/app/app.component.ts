@@ -6,5 +6,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'mask-angular-demo';
+  // Set our map properties
+  mapCenter = [121.5470599, 25.0461158];
+  basemapType = 'streets';
+  mapZoomLevel = 16;
+
+  // See app.component.html
+  mapLoadedEvent(status: boolean) {
+    console.log('The map loaded: ' + status);
+  }
 }
