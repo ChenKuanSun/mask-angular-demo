@@ -99,7 +99,7 @@ export class EsriMapComponent implements OnInit, OnDestroy {
             show_label: 'true'
           },
           url:
-            'assets/med-stores_geojson.json',
+            './assets/med-stores_geojson.json',
           featureReduction: clusterConfig,
           popupTemplate: {
             title: '{name}',
